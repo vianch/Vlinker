@@ -1,0 +1,32 @@
+{
+  "name": "vlinker",
+  "version": "0.0.1",
+  "description": "A javascript controller for led rgb tape",
+  "main": "index.js",
+  "scripts": {
+    "start": "node vlinker_server/vlinker",
+    "test": "karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vianch/Vlinker.git"
+  },
+  "keywords": [
+    "RGB",
+    "led",
+    "Tape",
+    "vlinker"
+  ],
+  "author": "VIANCH",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/vianch/Vlinker/issues"
+  },
+  "homepage": "https://github.com/vianch/Vlinker#readme",
+  "devDependencies": {
+ 
+  },
+  "dependencies": {
+    "johnny-five": "^0.9.19"
+  }
+}
