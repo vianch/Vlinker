@@ -1,5 +1,3 @@
-var exports = module.exports = {};
-
 function ColorLed(_isCommonAnode) {
 	this.isCommonAnode = _isCommonAnode;
 }

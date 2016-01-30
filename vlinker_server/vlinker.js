@@ -1,38 +1,59 @@
 var five = require("johnny-five");
-var ColorLed = require("./color_led.js");
 
-five.Board().on("ready", function() {
-  var color = new ColorLed(true);
-  var isOn; 
-  var led = new five.Led.RGB({
-    pins: {
-      red: 9,
-      green: 10,
-      blue: 11
-    }
-  });
-  var button = new five.Button(2);
-  var turnOnLed = function() {
-  	isOn = true;
-  	led.on();
-  };
+function Vlinker() {
+	this._led = null;
+	this._button = null;
+	this._isTheLigthOn = false;
+	this.startBoard();
+	this._isVlinkerReady = false;
+}	
 
+Vlinker.prototype.startBoard = function() {
+	five.Board().on("ready", () => { 
+		this.initializeComponents();
+		this.initializeResetButton();
+	});
+};
 
-  // Turn it on and set the initial color
-  turnOnLed();
-  led.color(color.hexToRgb("#ff0000"));
+Vlinker.prototype.initializeComponents = function(argument){
+	this._led = new five.Led.RGB({
+	 	pins: { red: 9, green: 10, blue: 11 },
+	 	isAnode: true
+	});
+	this.turnLigthOff();
 
+	this._button = new five.Button(2);
 
-  button.on("press", function() {
+	this._isVlinkerReady = true;
+};
 
-   		if(isOn) {
-    		led.color(color.hexToRgb("#000000"));
+Vlinker.prototype.turnLigthOn = function() {
+	this._isTheLigthOn = true;
+	this._led.color("#FF0000");
+};
+ 
+Vlinker.prototype.turnLigthOff = function() { 
+		this._led.color("#000000");
+		this._isTheLigthOn = false;
+};
 
-    	} else {
-    		led.color(color.hexToRgb("#ff0000"));
-    	}
-     isOn = !isOn;
+Vlinker.prototype.initializeResetButton = function() { 
+	var _this = this;
+	
+	this._button .on("down", function() {
+		if(_this._isTheLigthOn) {
+	    	_this.turnLigthOff();
+		} else {
+			_this.turnLigthOn();
+		}
+	});
+};
 
-  });
+Vlinker.prototype.setLigthColor = function(color){
+	this._led.color(color);
+};
 
-});
+Vlinker.prototype.isVlinkerReady = function() {
+	return this._isVlinkerReady;
+}
+module.exports = new Vlinker();
