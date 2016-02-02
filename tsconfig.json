@@ -1,0 +1,23 @@
+{
+  "version": "1.5.0",
+  "compilerOptions": {
+    "target": "es5",
+       "module": "commonjs",
+       "noImplicitAny": false,
+       "removeComments": true,
+       "noLib": false,
+       "emitDecoratorMetadata": true,
+       "experimentalDecorators": true,
+       "sourceMap": true,
+       "listFiles": true,
+        "outDir": "build/js",   
+         "suppressImplicitAnyIndexErrors": true
+  },
+   "files": [
+    	"typings/tsd.d.ts",
+      "vlinker_web_app/contracts/vlinker.d.ts"
+   ],
+   "exclude": "node_modules"
+}
+
+

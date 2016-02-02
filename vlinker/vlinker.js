@@ -59,6 +59,17 @@ class Vlinker {
 	isVlinkerReady() {
 		return this._isVlinkerReady;
 	}
+
+	rainbowEfect() {
+		let iterator = 0,
+		colorArray = ["#FF0000","#FF7F00","#FFFF00","#00FF00","#0000FF","#4B0082","#8F00FF"];
+		setInterval(() => { 
+			console.log(colorArray[iterator]);
+			this.setLigthColor(colorArray[iterator]);
+			++iterator
+			iterator = (iterator === colorArray.length) ? 0 :  iterator;
+		}, 30);
+	}
 } 
 
 
