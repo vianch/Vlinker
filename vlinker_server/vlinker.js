@@ -1,59 +1,65 @@
-var five = require("johnny-five");
+'use strict';
 
-function Vlinker() {
-	this._led = null;
-	this._button = null;
-	this._isTheLigthOn = false;
-	this.startBoard();
-	this._isVlinkerReady = false;
-}	
+const  five = require("johnny-five");
 
-Vlinker.prototype.startBoard = function() {
-	five.Board().on("ready", () => { 
-		this.initializeComponents();
-		this.initializeResetButton();
-	});
-};
+class Vlinker {
+	constructor() {
+		this._led = null;
+		this._button = null;
+		this._isTheLigthOn = false;
+		this.startBoard();
+		this._isVlinkerReady = false;
+	}
 
-Vlinker.prototype.initializeComponents = function(argument){
-	this._led = new five.Led.RGB({
-	 	pins: { red: 9, green: 10, blue: 11 },
-	 	isAnode: true
-	});
-	this.turnLigthOff();
+	startBoard() {
+		five.Board().on("ready", () => { 
+			this.initializeComponents();
+			this.initializeResetButton();
+		});
+	}
 
-	this._button = new five.Button(2);
+	initializeComponents() {
+		this._led = new five.Led.RGB({
+		 	pins: { red: 9, green: 10, blue: 11 },
+		 	isAnode: true
+		});
+		this.turnLigthOff();
 
-	this._isVlinkerReady = true;
-};
+		this._button = new five.Button(2);
 
-Vlinker.prototype.turnLigthOn = function() {
-	this._isTheLigthOn = true;
-	this._led.color("#FF0000");
-};
- 
-Vlinker.prototype.turnLigthOff = function() { 
+		this._isVlinkerReady = true;
+	}
+
+	turnLigthOn() { 
+		this._isTheLigthOn = true;
+		this._led.color("#FF0000");
+	}
+
+	turnLigthOff() {
 		this._led.color("#000000");
 		this._isTheLigthOn = false;
-};
+	}
 
-Vlinker.prototype.initializeResetButton = function() { 
-	var _this = this;
-	
-	this._button .on("down", function() {
-		if(_this._isTheLigthOn) {
-	    	_this.turnLigthOff();
-		} else {
-			_this.turnLigthOn();
-		}
-	});
-};
+	initializeResetButton() {
+		let _this = this;
+		
+		this._button .on("down", function() {
+			if(_this._isTheLigthOn) {
+		    	_this.turnLigthOff();
+			} else {
+				_this.turnLigthOn();
+			}
+		});
+	}
 
-Vlinker.prototype.setLigthColor = function(color){
-	this._led.color(color);
-};
+	setLigthColor(color) {
+		this._led.color(color);
+	}
 
-Vlinker.prototype.isVlinkerReady = function() {
-	return this._isVlinkerReady;
-}
+	isVlinkerReady() {
+		return this._isVlinkerReady;
+	}
+} 
+
+
 module.exports = new Vlinker();
