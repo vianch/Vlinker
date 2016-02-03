@@ -11,4 +11,4 @@ ColorLed.prototype.setColorRGBColor = function(r,g,b) {
 	return (this.isCommonAnode) ? { red: 255-r, green: 255-g, blue: 255-b} : { red: r, green: g, blue: b};
 }
 
-module.exports = ColorLed;
+module.exports = new ColorLed(false);

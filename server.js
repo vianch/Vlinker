@@ -10,6 +10,7 @@ const Vlinker = require("./vlinker/vlinker.js");
 class VServer { 
 	constructor(port) { 
 		this.server = null;
+		this.socket = null;
 		this.port = (port) ? port : 8080;
 		this.initServer();
 		this.initEvents();
@@ -60,10 +61,24 @@ class VServer {
 
 	}
 
+
 	socketIOEvents() {
 		let listener = io.listen(this.server);
-		listener.sockets.on('connection', function(socket){
-		    socket.emit('conection', {'message': 'Successfully connection'});
+		listener.sockets.on('connection', (socket) => {
+			this.socket = socket;
+		    this.socketConectionEvent();
+		    this.socketSetColorEvent();
+		});
+	}
+
+	socketConectionEvent() {
+		this.socket.emit('conection', {'message': 'Successfully connection'});
+	}
+
+	socketSetColorEvent() {
+		this.socket.on('setColors', (RGBcolors) => {
+		  Vlinker.setLigthColor(RGBcolors);
+		  Vlinker.setLCDMessage(`R:${RGBcolors.red},G:${RGBcolors.green},B:${RGBcolors.blue} `);
 		});
 	}
 

@@ -49,7 +49,7 @@ class Vlinker {
 		this._isTheLigthOn = false;
 	}
 
-		setLigthColor(color) {
+	setLigthColor(color) {
 		this._led.color(color);
 	}
 

@@ -7,7 +7,7 @@ import "../../assets/styles/vlinker/main.scss";
 
 })
 export default class App implements OnInit {
-	public redValue: number;
+	public colors: IRGBColors;
 	private socket: Socket;
 	
 	constructor() {
@@ -15,7 +15,11 @@ export default class App implements OnInit {
 	}
 
 	ngOnInit() {
-		this.redValue = 180;
+		this.colors = <IRGBColors>{
+			red: 0,
+			green: 0,
+			blue: 0
+		};
 	}
 
 	private socketIOConnection(server: string): void {
@@ -23,5 +27,10 @@ export default class App implements OnInit {
 		this.socket.on("conection", (data: { message: string }) => {
 			console.log(data.message);
 		});
+	}
+
+	public setColors($evemt) {
+		console.log(this.colors);
+		this.socket.emit("setColors", this.colors);
 	}
 }
