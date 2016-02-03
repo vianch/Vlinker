@@ -63,7 +63,6 @@ class VServer {
 	socketIOEvents() {
 		let listener = io.listen(this.server);
 		listener.sockets.on('connection', function(socket){
-			console.log("CONNECTED");
 		    socket.emit('conection', {'message': 'Successfully connection'});
 		});
 	}
@@ -72,9 +71,9 @@ class VServer {
 		this.server.on('connection', function(stream) {
 			if(Vlinker.isVlinkerReady()) {
 				Vlinker.setLigthColor("#00FF00");
-				console.log('Conection successfull!!');
+				Vlinker.setLCDMessage('PC: CONNECTED!');
 			} else {
-				console.log("VLINKER HARDWARE IS NOT READY YET");
+				console.log("VLINKER NOT READY YET");
 			}
 		});
 

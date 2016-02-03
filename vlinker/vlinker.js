@@ -5,7 +5,7 @@ const  five = require("johnny-five");
 class Vlinker {
 	constructor() {
 		this._led = null;
-		this._button = null;
+		this._lcd = null;
 		this._isTheLigthOn = false;
 		this.startBoard();
 		this._isVlinkerReady = false;
@@ -14,20 +14,29 @@ class Vlinker {
 	startBoard() {
 		five.Board().on("ready", () => { 
 			this.initializeComponents();
-			this.initializeResetButton();
+			this._isVlinkerReady = true;
 		});
 	}
 
 	initializeComponents() {
+		this.startLedRGB();
+		this.startLCDController();
+	}
+
+	startLedRGB() {
 		this._led = new five.Led.RGB({
-		 	pins: { red: 9, green: 10, blue: 11 },
+		 	pins: { red: 3, green: 11, blue: 10 },
 		 	isAnode: true
 		});
 		this.turnLigthOff();
+	}
 
-		this._button = new five.Button(2);
-
-		this._isVlinkerReady = true;
+	startLCDController() {
+		// Parallel LCD
+		this._lcd = new five.LCD({ 
+		  pins: [8, 9, 4, 5, 6, 7]
+		});
+		this.setLCDMessage("VLINKER Ready!")
 	}
 
 	turnLigthOn() { 
@@ -40,31 +49,24 @@ class Vlinker {
 		this._isTheLigthOn = false;
 	}
 
-	initializeResetButton() {
-		let _this = this;
-		
-		this._button .on("down", function() {
-			if(_this._isTheLigthOn) {
-		    	_this.turnLigthOff();
-			} else {
-				_this.turnLigthOn();
-			}
-		});
-	}
-
-	setLigthColor(color) {
+		setLigthColor(color) {
 		this._led.color(color);
 	}
 
+
 	isVlinkerReady() {
 		return this._isVlinkerReady;
+	}
+
+	setLCDMessage(message) {
+		this._lcd.clear();
+		this._lcd.print(message);
 	}
 
 	rainbowEfect() {
 		let iterator = 0,
 		colorArray = ["#FF0000","#FF7F00","#FFFF00","#00FF00","#0000FF","#4B0082","#8F00FF"];
 		setInterval(() => { 
-			console.log(colorArray[iterator]);
 			this.setLigthColor(colorArray[iterator]);
 			++iterator
 			iterator = (iterator === colorArray.length) ? 0 :  iterator;
