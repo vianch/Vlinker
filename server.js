@@ -77,8 +77,8 @@ class VServer {
 
 	socketSetColorEvent() {
 		this.socket.on('setColors', (RGBcolors) => {
-		  Vlinker.setLigthColor(RGBcolors);
-		  Vlinker.setLCDMessage(`R:${RGBcolors.red},G:${RGBcolors.green},B:${RGBcolors.blue} `);
+		  Vlinker.setLigthColor(RGBcolors.color);
+		//Vlinker.setLCDMessage(`R:${RGBcolors.red},G:${RGBcolors.green},B:${RGBcolors.blue} `);
 		});
 	}
 

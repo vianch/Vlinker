@@ -1,3 +1,5 @@
+/// <reference path="home.d.ts" />
+
 declare const io: {
     connect(url: string): Socket;
 }

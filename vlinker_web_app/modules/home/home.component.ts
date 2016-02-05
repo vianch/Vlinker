@@ -6,8 +6,8 @@ import "../../assets/styles/vlinker/main.scss";
   template: require("./home.component.html"),
 
 })
-export default class App implements OnInit {
-	public colors: IRGBColors;
+export default class App implements OnInit, IHome {
+	public RGBcolors: IRGBColors;
 	private socket: Socket;
 	
 	constructor() {
@@ -15,7 +15,7 @@ export default class App implements OnInit {
 	}
 
 	ngOnInit() {
-		this.colors = <IRGBColors>{
+		this.RGBcolors = <IRGBColors>{
 			red: 0,
 			green: 0,
 			blue: 0
@@ -29,8 +29,11 @@ export default class App implements OnInit {
 		});
 	}
 
-	public setColors($evemt) {
-		console.log(this.colors);
-		this.socket.emit("setColors", this.colors);
+	public setRGBColors($evemt) {
+		this.socket.emit("setColors", { color: this.RGBcolors });
+	}
+
+	public setHexColors(hexColor: string) {
+		this.socket.emit("setColors", { color: hexColor });
 	}
 }

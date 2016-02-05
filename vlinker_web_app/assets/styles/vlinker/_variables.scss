@@ -20,8 +20,11 @@ $color-info          : #5bc0de !default;
 $color-warning       : $color-yellow  !default;
 $color-danger        : #d9534f !default;
 
+//** Theme Colors
+$color-theme-one: #2e3138;
+
 //** Background color for `<body>`.
 $white-color      : #ffffff !default;
-$body-bg          : $white-color !default;
+$body-bg          : $color-theme-one !default;
 //** Global text color on `<body>`.
 $text-color       : $gray-dark !default;

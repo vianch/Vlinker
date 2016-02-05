@@ -6,13 +6,15 @@ class Vlinker {
 	constructor() {
 		this._led = null;
 		this._lcd = null;
+		this._board = null;
 		this._isTheLigthOn = false;
-		this.startBoard();
 		this._isVlinkerReady = false;
+		this.startBoard();
 	}
 
 	startBoard() {
-		five.Board().on("ready", () => { 
+		this._board = new five.Board({ port: "COM3" });
+		this._board.on("ready", () => { 
 			this.initializeComponents();
 			this._isVlinkerReady = true;
 		});
@@ -26,7 +28,8 @@ class Vlinker {
 	startLedRGB() {
 		this._led = new five.Led.RGB({
 		 	pins: { red: 3, green: 11, blue: 10 },
-		 	isAnode: true
+		 	isAnode: true,
+		 	board: this._boardA
 		});
 		this.turnLigthOff();
 	}
@@ -34,9 +37,10 @@ class Vlinker {
 	startLCDController() {
 		// Parallel LCD
 		this._lcd = new five.LCD({ 
-		  pins: [8, 9, 4, 5, 6, 7]
+		  pins: [8, 9, 4, 5, 6, 7],
+		  rows: 2,
+		  cols: 16,
 		});
-		this.setLCDMessage("VLINKER Ready!")
 	}
 
 	turnLigthOn() { 
