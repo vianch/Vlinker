@@ -13,7 +13,7 @@ class Vlinker {
 	}
 
 	startBoard() {
-		this._board = new five.Board({ port: "COM3" });
+		this._board = new five.Board();
 		this._board.on("ready", () => { 
 			this.initializeComponents();
 			this._isVlinkerReady = true;
