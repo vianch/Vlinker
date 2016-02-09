@@ -11,7 +11,7 @@ export default class App implements OnInit, IHome {
 	private socket: Socket;
 	
 	constructor() {
-		this.socketIOConnection("http://192.168.1.4:8081");
+		this.socketIOConnection("http://192.168.1.2:8081");
 	}
 
 	ngOnInit() {
