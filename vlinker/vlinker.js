@@ -27,8 +27,8 @@ class Vlinker {
 
 	startLedRGB() {
 		this._led = new five.Led.RGB({
-		 	pins: { red: 3, green: 11, blue: 10 },
-		 	isAnode: true,
+		 	pins: { red: 10, green: 11, blue: 3 },
+		 	isAnode: false,
 		 	board: this._boardA
 		});
 		this.turnLigthOff();
