@@ -26,7 +26,7 @@ webpackJsonp([0],{
 	__webpack_require__(266);
 	var App = (function () {
 	    function App() {
-	        this.socketIOConnection("http://192.168.100.101:8081");
+	        this.socketIOConnection("http://192.168.1.4:8081");
 	    }
 	    App.prototype.ngOnInit = function () {
 	        this.RGBcolors = {
