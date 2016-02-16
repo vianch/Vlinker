@@ -11,7 +11,7 @@ export default class App implements OnInit, IHome {
 	private socket: Socket;
 	
 	constructor() {
-		this.socketIOConnection("http://192.168.1.4:8081");
+		this.socketIOConnection(window.location.href);
 	}
 
 	ngOnInit() {
@@ -29,11 +29,19 @@ export default class App implements OnInit, IHome {
 		});
 	}
 
-	public setRGBColors($evemt) {
+	public setRGBColors($evemt): void {
 		this.socket.emit("setColors", { color: this.RGBcolors });
 	}
 
-	public setHexColors(hexColor: string) {
+	public setHexColors(hexColor: string): void {
 		this.socket.emit("setColors", { color: hexColor });
+	}
+
+	public rainbowEffect(): void {
+		this.socket.emit("rainbowColors", {data: ""});
+	}
+
+	public fadeEffect(): void {
+		this.socket.emit("fadeColors", { data: "" });
 	}
 }

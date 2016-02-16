@@ -58,7 +58,6 @@ class VServer {
 	initEvents() {
 		this.nodeEvents();
 		this.socketIOEvents();
-
 	}
 
 
@@ -68,6 +67,8 @@ class VServer {
 			this.socket = socket;
 		    this.socketConectionEvent();
 		    this.socketSetColorEvent();
+		    this.socketRainbowEvent();
+		    this.socketFadeEvent();
 		});
 	}
 
@@ -76,23 +77,45 @@ class VServer {
 	}
 
 	socketSetColorEvent() {
-		this.socket.on('setColors', (RGBcolors) => {
-		  Vlinker.setLigthColor(RGBcolors.color);
-		//Vlinker.setLCDMessage(`R:${RGBcolors.red},G:${RGBcolors.green},B:${RGBcolors.blue} `);
-		});
+		if(Vlinker.isVlinkerReady()) {
+			this.socket.on('setColors', (RGBcolors) => {
+			  Vlinker.clearIntervals();
+			  Vlinker.setLigthColor(RGBcolors.color);
+			//Vlinker.setLCDMessage(`R:${RGBcolors.red},G:${RGBcolors.green},B:${RGBcolors.blue} `);
+			});
+		}
+	}
+
+	socketRainbowEvent() {
+		if(Vlinker.isVlinkerReady()) { 
+			this.socket.on('rainbowColors', (data) => {
+				console.log("RAINBOW START");
+			  Vlinker.rainbowEfect();
+			});
+		}
+	
+	}
+
+	socketFadeEvent() {
+		if(Vlinker.isVlinkerReady()) { 
+			this.socket.on('fadeColors', (data) => {
+				console.log("FADE START");
+			  	Vlinker.fadeEffect(100,2000);
+			});
+		}
 	}
 
 	nodeEvents() {
-		this.server.on('connection', function(stream) {
+		this.server.on('connection', (stream) => {
 			if(Vlinker.isVlinkerReady()) {
-				Vlinker.setLigthColor("#00FF00");
-				Vlinker.setLCDMessage('PC: CONNECTED!');
+				
+				//Vlinker.setLCDMessage('PC: CONNECTED!');
 			} else {
 				console.log("VLINKER NOT READY YET");
 			}
 		});
 
-		this.server.on( 'close', function() { 
+		this.server.on( 'close', () => { 
 			if(Vlinker.isVlinkerReady()) { 
 				Vlinker.turnLigthOff();
 			}

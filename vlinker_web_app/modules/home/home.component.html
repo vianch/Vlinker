@@ -1,4 +1,6 @@
 <div class="container">
+
+<!-- RGB SLIDE SELECTOR -->
     <div class="row">
       <div class="twelve columns">
         <section class="preference">
@@ -27,11 +29,27 @@
 	</section>
 
       </div>
+    </div><!--/ RGB SLIDE SELECTOR -->
+
+
+    <!-- EFFECT  SELECTOR -->
+    <div class="row">
+    	<div class="one-third column">
+    		<button (click)="rainbowEffect()">Rainbow effect</button>
+    	</div>
+
+    	<div class="one-third column">
+    		<button (click)="fadeEffect()">Fade effect</button>
+    	</div>
+
+    	<div class="one-third column">
+    		<button>Blink effect</button>
+    	</div>
     </div>
-  </div>
+    <!-- EFFECT  SELECTOR -->
 
 
-  <div class="container">
+    <!-- STATIC COLOR SELECTOR -->
     <div class="row">
       <div class="twelve columns square-color red" (click)="setHexColors('#ff0000')">eTnl</div>
       <div class="twelve columns square-color green" (click)="setHexColors('#00ff00')">Ten</div>
@@ -40,4 +58,8 @@
       <div class="twelve columns square-color cyan" (click)="setHexColors('#0FC9F2')">Ten</div>
       <div class="twelve columns square-color yellow" (click)="setHexColors('#FFF700')">Ten</div>
     </div>
+    <!--/ STATIC COLOR SELECTOR -->
   </div>
+
+
+

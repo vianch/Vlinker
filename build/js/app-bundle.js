@@ -26,7 +26,7 @@ webpackJsonp([0],{
 	__webpack_require__(266);
 	var App = (function () {
 	    function App() {
-	        this.socketIOConnection("http://192.168.1.4:8081");
+	        this.socketIOConnection(window.location.href);
 	    }
 	    App.prototype.ngOnInit = function () {
 	        this.RGBcolors = {
@@ -46,6 +46,12 @@ webpackJsonp([0],{
 	    };
 	    App.prototype.setHexColors = function (hexColor) {
 	        this.socket.emit("setColors", { color: hexColor });
+	    };
+	    App.prototype.rainbowEffect = function () {
+	        this.socket.emit("rainbowColors", { data: "" });
+	    };
+	    App.prototype.fadeEffect = function () {
+	        this.socket.emit("fadeColors", { data: "" });
 	    };
 	    App = __decorate([
 	        core_1.Component({
@@ -468,7 +474,7 @@ webpackJsonp([0],{
 /***/ 273:
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"twelve columns\">\r\n        <section class=\"preference\">\r\n\r\n\t\t<div>\r\n\t\t\t \t<div class=\"caption red\">Red</div>\r\n\t\t\t<label for=\"red\" class=\"brightness fa\">\r\n\t\t\t\t<input class=\"red\" id=\"red\" type=\"range\" min=\"0\" max=\"255\" step=\"1\"  [(ngModel)]=\"RGBcolors.red\"  (ngModelChange)=\"setRGBColors($event)\" />\r\n\t\t\t</label>\r\n\t\t</div>\r\n\r\n\t\t<div>\r\n\t\t\t<div class=\"caption green\">Green</div>\r\n\t\t\t<label for=\"green\" class=\"brightness fa\">\r\n\t\t\t\t<input class=\"green\" id=\"green\" type=\"range\" min=\"0\" max=\"255\" step=\"1\" value=\"0\"  [(ngModel)]=\"RGBcolors.green\" (ngModelChange)=\"setRGBColors($event)\" >\r\n\t\t\t</label>\r\n\t\t</div>\r\n\t\t\r\n\t\t<div>\r\n\t\t\t<div class=\"caption blue\">Blue</div>\r\n\t\t\t<label for=\"blue\" class=\"brightness fa\">\r\n\t\t\t\t<input class=\"blue\" id=\"blue\" type=\"range\" min=\"0\" max=\"255\" step=\"1\" value=\"0\"  [(ngModel)]=\"RGBcolors.blue\" (ngModelChange)=\"setRGBColors($event)\" >\r\n\t\t\t</label>\r\n\t\t</div>\r\n\r\n\t</section>\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"twelve columns square-color red\" (click)=\"setHexColors('#ff0000')\">eTnl</div>\r\n      <div class=\"twelve columns square-color green\" (click)=\"setHexColors('#00ff00')\">Ten</div>\r\n      <div class=\"twelve columns square-color blue\" (click)=\"setHexColors('#0000ff')\">Ten</div>\r\n      <div class=\"twelve columns square-color purple\" (click)=\"setHexColors('#F20FE3')\">Ten</div>\r\n      <div class=\"twelve columns square-color cyan\" (click)=\"setHexColors('#0FC9F2')\">Ten</div>\r\n      <div class=\"twelve columns square-color yellow\" (click)=\"setHexColors('#FFF700')\">Ten</div>\r\n    </div>\r\n  </div>";
+	module.exports = "<div class=\"container\">\r\n\r\n<!-- RGB SLIDE SELECTOR -->\r\n    <div class=\"row\">\r\n      <div class=\"twelve columns\">\r\n        <section class=\"preference\">\r\n\r\n\t\t<div>\r\n\t\t\t \t<div class=\"caption red\">Red</div>\r\n\t\t\t<label for=\"red\" class=\"brightness fa\">\r\n\t\t\t\t<input class=\"red\" id=\"red\" type=\"range\" min=\"0\" max=\"255\" step=\"1\"  [(ngModel)]=\"RGBcolors.red\"  (ngModelChange)=\"setRGBColors($event)\" />\r\n\t\t\t</label>\r\n\t\t</div>\r\n\r\n\t\t<div>\r\n\t\t\t<div class=\"caption green\">Green</div>\r\n\t\t\t<label for=\"green\" class=\"brightness fa\">\r\n\t\t\t\t<input class=\"green\" id=\"green\" type=\"range\" min=\"0\" max=\"255\" step=\"1\" value=\"0\"  [(ngModel)]=\"RGBcolors.green\" (ngModelChange)=\"setRGBColors($event)\" >\r\n\t\t\t</label>\r\n\t\t</div>\r\n\t\t\r\n\t\t<div>\r\n\t\t\t<div class=\"caption blue\">Blue</div>\r\n\t\t\t<label for=\"blue\" class=\"brightness fa\">\r\n\t\t\t\t<input class=\"blue\" id=\"blue\" type=\"range\" min=\"0\" max=\"255\" step=\"1\" value=\"0\"  [(ngModel)]=\"RGBcolors.blue\" (ngModelChange)=\"setRGBColors($event)\" >\r\n\t\t\t</label>\r\n\t\t</div>\r\n\r\n\t</section>\r\n\r\n      </div>\r\n    </div><!--/ RGB SLIDE SELECTOR -->\r\n\r\n\r\n    <!-- EFFECT  SELECTOR -->\r\n    <div class=\"row\">\r\n    \t<div class=\"one-third column\">\r\n    \t\t<button (click)=\"rainbowEffect()\">Rainbow effect</button>\r\n    \t</div>\r\n\r\n    \t<div class=\"one-third column\">\r\n    \t\t<button (click)=\"fadeEffect()\">Fade effect</button>\r\n    \t</div>\r\n\r\n    \t<div class=\"one-third column\">\r\n    \t\t<button>Blink effect</button>\r\n    \t</div>\r\n    </div>\r\n    <!-- EFFECT  SELECTOR -->\r\n\r\n\r\n    <!-- STATIC COLOR SELECTOR -->\r\n    <div class=\"row\">\r\n      <div class=\"twelve columns square-color red\" (click)=\"setHexColors('#ff0000')\">eTnl</div>\r\n      <div class=\"twelve columns square-color green\" (click)=\"setHexColors('#00ff00')\">Ten</div>\r\n      <div class=\"twelve columns square-color blue\" (click)=\"setHexColors('#0000ff')\">Ten</div>\r\n      <div class=\"twelve columns square-color purple\" (click)=\"setHexColors('#F20FE3')\">Ten</div>\r\n      <div class=\"twelve columns square-color cyan\" (click)=\"setHexColors('#0FC9F2')\">Ten</div>\r\n      <div class=\"twelve columns square-color yellow\" (click)=\"setHexColors('#FFF700')\">Ten</div>\r\n    </div>\r\n    <!--/ STATIC COLOR SELECTOR -->\r\n  </div>\r\n\r\n\r\n\r\n";
 
 /***/ }
 
