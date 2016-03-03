@@ -14,10 +14,10 @@
          "suppressImplicitAnyIndexErrors": true
   },
    "files": [
-    	"typings/tsd.d.ts",
-      "vlinker_web_app/contracts/vlinker.d.ts"
-   ],
-   "exclude": "node_modules"
+     "typings/tsd.d.ts",
+     "app/contracts/vlinker.d.ts",
+     "node_modules/angular2/typings/browser.d.ts"
+   ]
 }
 
 

@@ -1,0 +1,30 @@
+//== FONTS
+$font-size-base   : 14px !default;
+$font-size-large  : ceil(($font-size-base * 1.25)) !default; // ~18px
+$font-size-small  : ceil(($font-size-base * 0.85)) !default; // ~12px
+
+//== Colors
+$gray-base        : #000 !default;
+$gray-darker      : lighten($gray-base, 13.5%) !default; // #222
+$gray-dark        : lighten($gray-base, 20%) !default;   // #333
+$gray             : lighten($gray-base, 33.5%) !default; // #555
+$gray-light       : lighten($gray-base, 46.7%) !default; // #777
+$gray-lighter     : lighten($gray-base, 93.5%) !default; // #eee
+
+$color-blue          : #0084ff;
+$color-green         : #2dc100;
+$color-yellow         : #f0ad4e;
+
+$color-success       : #5cb85c !default;
+$color-info          : #5bc0de !default;
+$color-warning       : $color-yellow  !default;
+$color-danger        : #d9534f !default;
+
+//** Theme Colors
+$color-theme-one: #2e3138;
+
+//** Background color for `<body>`.
+$white-color      : #ffffff !default;
+$body-bg          : $color-theme-one !default;
+//** Global text color on `<body>`.
+$text-color       : $gray-dark !default;

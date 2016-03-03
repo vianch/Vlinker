@@ -1,0 +1,1 @@
+//TODO: Aqui va todo los llamados a socket.io que por ahoira estan en home

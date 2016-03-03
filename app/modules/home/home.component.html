@@ -1,0 +1,65 @@
+<div class="container">
+
+<!-- RGB SLIDE SELECTOR -->
+    <div class="row">
+      <div class="twelve columns">
+        <section class="preference">
+
+			<div>
+				<div class="caption red">Red</div>
+				<label for="red" class="brightness fa">
+					<input class="red" id="red" type="range" min="0" max="255" step="1"  [(ngModel)]="RGBcolors.red"  (ngModelChange)="setRGBColors($event)" />
+				</label>
+			</div>
+
+			<div>
+				<div class="caption green">Green</div>
+				<label for="green" class="brightness fa">
+					<input class="green" id="green" type="range" min="0" max="255" step="1" value="0"  [(ngModel)]="RGBcolors.green" (ngModelChange)="setRGBColors($event)" >
+				</label>
+			</div>
+
+			<div>
+				<div class="caption blue">Blue</div>
+				<label for="blue" class="brightness fa">
+					<input class="blue" id="blue" type="range" min="0" max="255" step="1" value="0"  [(ngModel)]="RGBcolors.blue" (ngModelChange)="setRGBColors($event)" >
+				</label>
+			</div>
+
+		</section>
+
+      </div>
+    </div><!--/ RGB SLIDE SELECTOR -->
+
+
+    <!-- EFFECT  SELECTOR -->
+    <div class="row">
+    	<div class="one-third column">
+    		<button (click)="rainbowEffect()">Rainbow effect</button>
+    	</div>
+
+    	<div class="one-third column">
+    		<button (click)="fadeEffect()">Fade effect</button>
+    	</div>
+
+    	<div class="one-third column">
+    		<button>Blink effect</button>
+    	</div>
+    </div>
+    <!-- EFFECT  SELECTOR -->
+
+
+    <!-- STATIC COLOR SELECTOR -->
+    <div class="row">
+      <div class="twelve columns square-color red" (click)="setHexColors('#ff0000')">eTnl</div>
+      <div class="twelve columns square-color green" (click)="setHexColors('#00ff00')">Ten</div>
+      <div class="twelve columns square-color blue" (click)="setHexColors('#0000ff')">Ten</div>
+      <div class="twelve columns square-color purple" (click)="setHexColors('#F20FE3')">Ten</div>
+      <div class="twelve columns square-color cyan" (click)="setHexColors('#0FC9F2')">Ten</div>
+      <div class="twelve columns square-color yellow" (click)="setHexColors('#FFF700')">Ten</div>
+    </div>
+    <!--/ STATIC COLOR SELECTOR -->
+  </div>
+
+
+
