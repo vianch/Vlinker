@@ -1,4 +1,5 @@
 /// <reference path="home.d.ts" />
+/// <reference path="socket.events.service.d.ts" />
 
 declare const io: {
     connect(url: string): Socket;
