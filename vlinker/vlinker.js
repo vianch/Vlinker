@@ -25,7 +25,8 @@ class Vlinker {
 
 	initializeComponents() {
 		this.startLedRGB();
-		this.startLCDController();
+		// this.startLCDController();
+		this.startMotionSensor();
 	}
 
 	startLedRGB() {
@@ -35,6 +36,28 @@ class Vlinker {
 		 	board: this._board
 		});
 		this.turnLigthOff();
+	}
+
+	startMotionSensor() {
+		let motion = new five.Motion(7);
+
+		motion.on("calibrated", () => {
+			console.log("Motion sensor calibrated");
+		});
+
+		motion.on("motionstart", () => {
+			console.log("motionstart");
+			this._led.intensity(100);
+		});
+
+		motion.on("motionend", () => {
+			console.log("motionend");
+			this._led.intensity(0);
+		});
+
+		motion.on("change", () => {
+			console.log("MOTION CHANGE");
+		});
 	}
 
 	startLCDController() {
@@ -49,7 +72,7 @@ class Vlinker {
 	turnLigthOn() { 
 		this.clearIntervals();
 		this._isTheLigthOn = true;
-		this._led.color("#FF0000");
+		this._led.color("#00FF00");
 	}
 
 	turnLigthOff() {
@@ -99,7 +122,6 @@ class Vlinker {
 		  this._led.intensity(ledIntensity);
 		});
 	}
-
 
 	clearIntervals() {
 		clearInterval(this._interval);
