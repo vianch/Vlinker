@@ -1,15 +1,12 @@
 webpackJsonp([2],{
 
 /***/ 0:
-/*!*****************************!*\
-  !*** ./app/modules/main.ts ***!
-  \*****************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var browser_1 = __webpack_require__(/*! angular2/platform/browser */ 157);
-	var ngCore = __webpack_require__(/*! angular2/core */ 5);
-	var home_component_1 = __webpack_require__(/*! ./home/home.component */ 560);
+	var browser_1 = __webpack_require__(157);
+	var ngCore = __webpack_require__(5);
+	var home_component_1 = __webpack_require__(560);
 	ngCore.enableProdMode();
 	browser_1.bootstrap(home_component_1.default, []).then(function (success) { return console.log("Vlinker web app load success"); }, function (error) { return console.error(error); });
 
@@ -17,9 +14,6 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 86:
-/*!**************************************!*\
-  !*** ./~/css-loader/lib/css-base.js ***!
-  \**************************************/
 /***/ function(module, exports) {
 
 	/*
@@ -77,12 +71,9 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 330:
-/*!***********************************************************!*\
-  !*** ./~/css-loader!./app/assets/styles/libs/animate.css ***!
-  \***********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 86)();
+	exports = module.exports = __webpack_require__(86)();
 	// imports
 	
 	
@@ -95,12 +86,9 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 331:
-/*!*************************************************************!*\
-  !*** ./~/css-loader!./app/assets/styles/libs/normalize.css ***!
-  \*************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 86)();
+	exports = module.exports = __webpack_require__(86)();
 	// imports
 	
 	
@@ -113,12 +101,9 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 332:
-/*!************************************************************!*\
-  !*** ./~/css-loader!./app/assets/styles/libs/skeleton.css ***!
-  \************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 86)();
+	exports = module.exports = __webpack_require__(86)();
 	// imports
 	
 	
@@ -131,16 +116,13 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 333:
-/*!***********************************************************************************************!*\
-  !*** ./~/css-loader!./~/postcss-loader!./~/sass-loader!./app/assets/styles/vlinker/main.scss ***!
-  \***********************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../../~/css-loader/lib/css-base.js */ 86)();
+	exports = module.exports = __webpack_require__(86)();
 	// imports
-	exports.i(__webpack_require__(/*! -!./../../../../~/css-loader!../libs/normalize.css */ 331), "");
-	exports.i(__webpack_require__(/*! -!./../../../../~/css-loader!../libs/skeleton.css */ 332), "");
-	exports.i(__webpack_require__(/*! -!./../../../../~/css-loader!../libs/animate.css */ 330), "");
+	exports.i(__webpack_require__(331), "");
+	exports.i(__webpack_require__(332), "");
+	exports.i(__webpack_require__(330), "");
 	exports.push([module.id, "@import url(http://fonts.googleapis.com/css?family=Sniglet|Oswald);", ""]);
 	
 	// module
@@ -152,19 +134,13 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 348:
-/*!**********************************************!*\
-  !*** ./app/modules/home/home.component.html ***!
-  \**********************************************/
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"container\">\r\n\r\n<!-- RGB SLIDE SELECTOR -->\r\n    <div class=\"row\">\r\n      <div class=\"twelve columns\">\r\n        <section class=\"preference\">\r\n\r\n\t\t\t<div>\r\n\t\t\t\t<div class=\"caption red\">Red</div>\r\n\t\t\t\t<label for=\"red\" class=\"brightness fa\">\r\n\t\t\t\t\t<input class=\"red\" id=\"red\" type=\"range\" min=\"0\" max=\"255\" step=\"1\"  [(ngModel)]=\"RGBColors.red\"  (ngModelChange)=\"setRGBColors($event)\" />\r\n\t\t\t\t</label>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div>\r\n\t\t\t\t<div class=\"caption green\">Green</div>\r\n\t\t\t\t<label for=\"green\" class=\"brightness fa\">\r\n\t\t\t\t\t<input class=\"green\" id=\"green\" type=\"range\" min=\"0\" max=\"255\" step=\"1\" value=\"0\"  [(ngModel)]=\"RGBColors.green\" (ngModelChange)=\"setRGBColors($event)\" >\r\n\t\t\t\t</label>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div>\r\n\t\t\t\t<div class=\"caption blue\">Blue</div>\r\n\t\t\t\t<label for=\"blue\" class=\"brightness fa\">\r\n\t\t\t\t\t<input class=\"blue\" id=\"blue\" type=\"range\" min=\"0\" max=\"255\" step=\"1\" value=\"0\"  [(ngModel)]=\"RGBColors.blue\" (ngModelChange)=\"setRGBColors($event)\" >\r\n\t\t\t\t</label>\r\n\t\t\t</div>\r\n\r\n\t\t</section>\r\n\r\n      </div>\r\n    </div><!--/ RGB SLIDE SELECTOR -->\r\n\r\n\r\n    <!-- EFFECT  SELECTOR -->\r\n    <div class=\"row\">\r\n    \t<div class=\"one-third column\">\r\n    \t\t<button (click)=\"rainbowEffect()\">Rainbow effect</button>\r\n    \t</div>\r\n\r\n    \t<div class=\"one-third column\">\r\n    \t\t<button (click)=\"fadeEffect()\">Fade effect</button>\r\n    \t</div>\r\n\r\n    \t<div class=\"one-third column\">\r\n    \t\t<button>Blink effect</button>\r\n    \t</div>\r\n    </div>\r\n    <!-- EFFECT  SELECTOR -->\r\n\r\n\r\n    <!-- STATIC COLOR SELECTOR -->\r\n    <div class=\"row\">\r\n      <div class=\"twelve columns square-color red\" (click)=\"setHexColors('#ff0000')\">eTnl</div>\r\n      <div class=\"twelve columns square-color green\" (click)=\"setHexColors('#00ff00')\">Ten</div>\r\n      <div class=\"twelve columns square-color blue\" (click)=\"setHexColors('#0000ff')\">Ten</div>\r\n      <div class=\"twelve columns square-color purple\" (click)=\"setHexColors('#F20FE3')\">Ten</div>\r\n      <div class=\"twelve columns square-color cyan\" (click)=\"setHexColors('#0FC9F2')\">Ten</div>\r\n      <div class=\"twelve columns square-color yellow\" (click)=\"setHexColors('#FFF700')\">Ten</div>\r\n    </div>\r\n    <!--/ STATIC COLOR SELECTOR -->\r\n  </div>\r\n\r\n\r\n\r\n";
+	module.exports = "<div class=\"container\">\r\n\r\n<!-- RGB SLIDE SELECTOR -->\r\n    <div class=\"row\">\r\n      <div class=\"twelve columns\">\r\n        <section class=\"preference\">\r\n\r\n\t\t\t<div>\r\n\t\t\t\t<div class=\"caption red\">Red</div>\r\n\t\t\t\t<label for=\"red\" class=\"brightness fa\">\r\n\t\t\t\t\t<input class=\"red\" id=\"red\" type=\"range\" min=\"0\" max=\"255\" step=\"1\"  [(ngModel)]=\"RGBColors.red\"  (ngModelChange)=\"setRGBColors($event)\" />\r\n\t\t\t\t</label>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div>\r\n\t\t\t\t<div class=\"caption green\">Green</div>\r\n\t\t\t\t<label for=\"green\" class=\"brightness fa\">\r\n\t\t\t\t\t<input class=\"green\" id=\"green\" type=\"range\" min=\"0\" max=\"255\" step=\"1\" value=\"0\"  [(ngModel)]=\"RGBColors.green\" (ngModelChange)=\"setRGBColors($event)\" >\r\n\t\t\t\t</label>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div>\r\n\t\t\t\t<div class=\"caption blue\">Blue</div>\r\n\t\t\t\t<label for=\"blue\" class=\"brightness fa\">\r\n\t\t\t\t\t<input class=\"blue\" id=\"blue\" type=\"range\" min=\"0\" max=\"255\" step=\"1\" value=\"0\"  [(ngModel)]=\"RGBColors.blue\" (ngModelChange)=\"setRGBColors($event)\" >\r\n\t\t\t\t</label>\r\n\t\t\t</div>\r\n\r\n\t\t</section>\r\n\r\n      </div>\r\n    </div><!--/ RGB SLIDE SELECTOR -->\r\n\r\n\r\n    <!-- EFFECT  SELECTOR -->\r\n    <div class=\"row\">\r\n    \t<div class=\"one-third column\">\r\n    \t\t<button (click)=\"rainbowEffect()\">Rainbow effect</button>\r\n    \t</div>\r\n\r\n    \t<div class=\"one-third column\">\r\n    \t\t<button (click)=\"shootCamera()\">Trigger camera</button>\r\n    \t</div>\r\n\r\n    \t<div class=\"one-third column\">\r\n    \t\t<button>Blink effect</button>\r\n    \t</div>\r\n    </div>\r\n    <!-- EFFECT  SELECTOR -->\r\n\r\n\r\n    <!-- STATIC COLOR SELECTOR -->\r\n    <div class=\"row\">\r\n      <div class=\"twelve columns square-color red\" (click)=\"setHexColors('#ff0000')\">eTnl</div>\r\n      <div class=\"twelve columns square-color green\" (click)=\"setHexColors('#00ff00')\">Ten</div>\r\n      <div class=\"twelve columns square-color blue\" (click)=\"setHexColors('#0000ff')\">Ten</div>\r\n      <div class=\"twelve columns square-color purple\" (click)=\"setHexColors('#F20FE3')\">Ten</div>\r\n      <div class=\"twelve columns square-color cyan\" (click)=\"setHexColors('#0FC9F2')\">Ten</div>\r\n      <div class=\"twelve columns square-color yellow\" (click)=\"setHexColors('#FFF700')\">Ten</div>\r\n    </div>\r\n    <!--/ STATIC COLOR SELECTOR -->\r\n  </div>\r\n\r\n\r\n\r\n";
 
 /***/ },
 
 /***/ 556:
-/*!*************************************!*\
-  !*** ./~/style-loader/addStyles.js ***!
-  \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -420,18 +396,15 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 557:
-/*!*********************************************!*\
-  !*** ./app/assets/styles/vlinker/main.scss ***!
-  \*********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../../~/css-loader!./../../../../~/postcss-loader!./../../../../~/sass-loader!./main.scss */ 333);
+	var content = __webpack_require__(333);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../../~/style-loader/addStyles.js */ 556)(content, {});
+	var update = __webpack_require__(556)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -450,9 +423,6 @@ webpackJsonp([2],{
 /***/ },
 
 /***/ 559:
-/*!***************************************************!*\
-  !*** ./app/modules/core/socket.events.service.ts ***!
-  \***************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(io) {"use strict";
@@ -465,7 +435,7 @@ webpackJsonp([2],{
 	var __metadata = (this && this.__metadata) || function (k, v) {
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
-	var core_1 = __webpack_require__(/*! angular2/core */ 5);
+	var core_1 = __webpack_require__(5);
 	var SocketEventsService = (function () {
 	    function SocketEventsService() {
 	        this.socketIOConnection(window.location.href);
@@ -482,6 +452,14 @@ webpackJsonp([2],{
 	    SocketEventsService.prototype.fadeEffect = function () {
 	        this.socket.emit("fadeColors", { data: "" });
 	    };
+	    SocketEventsService.prototype.triggerCamera = function (timeOut) {
+	        var _this = this;
+	        this.socket.emit("triggerCamera", { stateTrigger: 1 });
+	        setTimeout(function () {
+	            _this.socket.emit("triggerCamera", { stateTrigger: 0 });
+	            _this.socket.emit("setColors", { color: "#000000" });
+	        }, timeOut);
+	    };
 	    SocketEventsService.prototype.socketIOConnection = function (server) {
 	        this.socket = io.connect(server);
 	        this.socket.on("conection", function (data) {
@@ -496,14 +474,11 @@ webpackJsonp([2],{
 	}());
 	exports.SocketEventsService = SocketEventsService;
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! socket.io-client */ 254)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(254)))
 
 /***/ },
 
 /***/ 560:
-/*!********************************************!*\
-  !*** ./app/modules/home/home.component.ts ***!
-  \********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -516,9 +491,9 @@ webpackJsonp([2],{
 	var __metadata = (this && this.__metadata) || function (k, v) {
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
-	var core_1 = __webpack_require__(/*! angular2/core */ 5);
-	__webpack_require__(/*! ../../assets/styles/vlinker/main.scss */ 557);
-	var socket_events_service_1 = __webpack_require__(/*! ../core/socket.events.service */ 559);
+	var core_1 = __webpack_require__(5);
+	__webpack_require__(557);
+	var socket_events_service_1 = __webpack_require__(559);
 	var App = (function () {
 	    function App(_socketEventsService) {
 	        this._socketEventsService = _socketEventsService;
@@ -542,10 +517,14 @@ webpackJsonp([2],{
 	    App.prototype.fadeEffect = function () {
 	        this._socketEventsService.rainbowEffect();
 	    };
+	    App.prototype.shootCamera = function () {
+	        this.rainbowEffect();
+	        this._socketEventsService.triggerCamera(5000);
+	    };
 	    App = __decorate([
 	        core_1.Component({
 	            selector: "vlinker-app",
-	            template: __webpack_require__(/*! ./home.component.html */ 348),
+	            template: __webpack_require__(348),
 	            providers: [socket_events_service_1.SocketEventsService],
 	        }), 
 	        __metadata('design:paramtypes', [socket_events_service_1.SocketEventsService])

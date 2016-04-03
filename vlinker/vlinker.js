@@ -4,6 +4,7 @@ const  five = require("johnny-five");
 const temporal = require("temporal");
 
 class Vlinker {
+
 	constructor() {
 		this._led = null;
 		this._lcd = null;
@@ -25,8 +26,9 @@ class Vlinker {
 
 	initializeComponents() {
 		this.startLedRGB();
+		this.startCameraTrigger();
+		// this.startMotionSensor();
 		// this.startLCDController();
-		this.startMotionSensor();
 	}
 
 	startLedRGB() {
@@ -36,6 +38,15 @@ class Vlinker {
 		 	board: this._board
 		});
 		this.turnLigthOff();
+	}
+
+	startLCDController() {
+		// Parallel LCD
+		this._lcd = new five.LCD({
+			pins: [8, 9, 4, 5, 6, 7],
+			rows: 2,
+			cols: 16,
+		});
 	}
 
 	startMotionSensor() {
@@ -60,13 +71,12 @@ class Vlinker {
 		});
 	}
 
-	startLCDController() {
-		// Parallel LCD
-		this._lcd = new five.LCD({ 
-		  pins: [8, 9, 4, 5, 6, 7],
-		  rows: 2,
-		  cols: 16,
-		});
+	startCameraTrigger() {
+		this._board.pinMode(5, this._board.MODES.OUTPUT);
+	}
+
+	triggerCamera(stateTrigger) {
+		this._board.digitalWrite(5,stateTrigger);
 	}
 
 	turnLigthOn() { 
@@ -82,6 +92,7 @@ class Vlinker {
 	}
 
 	setLigthColor(color) {
+		this.clearIntervals();
 		this._led.color(color);
 	}
 
@@ -97,9 +108,10 @@ class Vlinker {
 
 	rainbowEfect() {
 		let iterator = 0,
-		colorArray = ["#FF0000","#FF7F00","#FFFF00","#00FF00","#0000FF","#4B0082","#8F00FF"];
-		this._interval = setInterval(() => { 
-			this.setLigthColor(colorArray[iterator]);
+		colorArray = ["#FF0000","#FF7F00","#FFFF00","#00FF00","#0000FF","#4B0082","#8F00FF"]
+		this.clearIntervals();
+		this._interval = setInterval(() => {
+			this._led.color(colorArray[iterator]);
 			++iterator
 			iterator = (iterator === colorArray.length) ? 0 :  iterator;
 		}, 300);

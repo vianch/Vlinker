@@ -24,6 +24,15 @@ class SocketEventsService implements  ISocketEventsService {
         this.socket.emit("fadeColors", { data: "" });
     }
 
+    public triggerCamera(timeOut): void {
+        this.socket.emit("triggerCamera", { stateTrigger: 1});
+        setTimeout(() => {
+            this.socket.emit("triggerCamera", { stateTrigger: 0});
+            this.socket.emit("setColors", { color: "#000000" });
+        }, timeOut);
+
+    }
+
     private socketIOConnection(server: string): void {
         this.socket = io.connect(server);
         this.socket.on("conection", (data: { message: string }) => {

@@ -1,4 +1,5 @@
 'use strict';
+
 const http = require('http');
 const url = require("url");
 const path = require("path");
@@ -69,6 +70,7 @@ class VServer {
 		    this.socketSetColorEvent();
 		    this.socketRainbowEvent();
 		    this.socketFadeEvent();
+			this.socketTriggercameraEvent();
 		});
 	}
 
@@ -104,11 +106,18 @@ class VServer {
 			});
 		}
 	}
+	
+	socketTriggercameraEvent() {
+		if(Vlinker.isVlinkerReady()) {
+			this.socket.on('triggerCamera', (data) => {
+				Vlinker.triggerCamera(data.stateTrigger);
+			});
+		}
+	}
 
 	nodeEvents() {
 		this.server.on('connection', (stream) => {
 			if(Vlinker.isVlinkerReady()) {
-				
 				//Vlinker.setLCDMessage('PC: CONNECTED!');
 			} else {
 				console.log("VLINKER NOT READY YET");

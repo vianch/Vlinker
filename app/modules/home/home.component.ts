@@ -35,4 +35,9 @@ export default class App implements IHome, OnInit {
 	public fadeEffect(): void {
 		this._socketEventsService.rainbowEffect();
 	}
+
+    public shootCamera() {
+        this.rainbowEffect();
+        this._socketEventsService.triggerCamera(5000);
+    }
 }
