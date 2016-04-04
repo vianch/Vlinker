@@ -9,6 +9,7 @@ import {SocketEventsService} from "../core/socket.events.service";
 })
 export default class App implements IHome, OnInit {
     public RGBColors: IRGBColors;
+    public triggerTime: number = 1000;
 
     constructor( private _socketEventsService: SocketEventsService ) { }
 
@@ -38,6 +39,6 @@ export default class App implements IHome, OnInit {
 
     public shootCamera() {
         this.rainbowEffect();
-        this._socketEventsService.triggerCamera(5000);
+        this._socketEventsService.triggerCamera(this.triggerTime);
     }
 }
