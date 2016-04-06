@@ -1,3 +1,71 @@
+/* Import */
+@import url(https://fonts.googleapis.com/css?family=Raleway);
 @import url(../libs/normalize.css);
-@import url(../libs/skeleton.css);
 @import url(../libs/animate.css);
+body {
+  background-color: #f6f0f0;
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+  color: #28222e; }
+
+.vl-wrapper {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  right: auto;
+  bottom: auto;
+  left: 0; }
+
+section {
+  width: 100%;
+  height: auto;
+  display: block; }
+  section.vl-camera {
+    width: 100%;
+    height: 290px;
+    clear: both;
+    display: block;
+    background: #e57261;
+    color: #faf2f2; }
+    section.vl-camera .vl-camera-trigger {
+      width: 128px;
+      height: 128px;
+      clear: both;
+      display: block;
+      background: url("../images/slr-128.png");
+      margin: 0 auto;
+      position: relative;
+      top: 20%;
+      right: auto;
+      bottom: auto;
+      left: 0; }
+    section.vl-camera h2 {
+      font-size: 18px;
+      font-size: 1.125rem;
+      position: relative;
+      top: 70px;
+      right: auto;
+      bottom: auto;
+      left: 0; }
+    section.vl-camera .vl-timmer {
+      position: relative;
+      top: 80px;
+      right: auto;
+      bottom: auto;
+      left: 0; }
+      section.vl-camera .vl-timmer p, section.vl-camera .vl-timmer .vl-timer-counter {
+        float: left;
+        width: 50%; }
+      section.vl-camera .vl-timmer p {
+        font-weight: bold; }
+      section.vl-camera .vl-timmer .vl-timer-number, section.vl-camera .vl-timmer .plus, section.vl-camera .vl-timmer .minus {
+        display: inline; }
+      section.vl-camera .vl-timmer .plus, section.vl-camera .vl-timmer .minus {
+        width: 29px;
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+        margin-top: 7px;
+        cursor: pointer;
+        background: #FFF2BE; }

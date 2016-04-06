@@ -1,62 +1,61 @@
-<div class="container">
+<div class="vl-wrapper">
+    <section class="vl-camera">
+            <div class="vl-camera-trigger"></div>
+            <h2>Camera</h2>
+            <div class="vl-timmer">
+                <p>Timmer</p>
+                <div class="vl-timer-counter">
+                    <span class="vl-timer-number">0</span>
+                    <div class="vl-button-number">-</div>
+                    <div class="vl-button-number">+</div>
+                </div>
+            </div>
+    </section>
 
-<!-- RGB SLIDE SELECTOR -->
-    <div class="row">
-      <div class="twelve columns">
-        <section class="preference">
+    <section class="vl-actions">
+        <div class="vl-action-option vl-ligth-option">
+            <div class="vl-icon vl-icon-lights"></div>
+            <p>Turn on lights</p>
+            <div class="toggle-btn ">
+              <input type="checkbox"  checked class="cb-value" />
+              <span class="round-btn"></span>
+            </div>
+        </div>
 
-			<div>
-				<div class="caption red">Red</div>
-				<label for="red" class="brightness fa">
-					<input class="red" id="red" type="range" min="0" max="255" step="1"  [(ngModel)]="RGBColors.red"  (ngModelChange)="setRGBColors($event)" />
-				</label>
-			</div>
+        <div class="vl-action-option vl-rainbow-option">
+            <div class="vl-icon vl-icon-rainbow"></div>
+            <p>Rainbow effect</p>
+            <div class="toggle-btn active">
+              <input type="checkbox"  checked class="cb-value" />
+              <span class="round-btn"></span>
+            </div>
+        </div>
 
-			<div>
-				<div class="caption green">Green</div>
-				<label for="green" class="brightness fa">
-					<input class="green" id="green" type="range" min="0" max="255" step="1" value="0"  [(ngModel)]="RGBColors.green" (ngModelChange)="setRGBColors($event)" >
-				</label>
-			</div>
+         <div class="vl-action-option vl-fade-option">
+            <div class="vl-icon vl-icon-fade"></div>
+            <p>Fade effect</p>
+            <div class="toggle-btn active">
+              <input type="checkbox"  checked class="cb-value" />
+              <span class="round-btn"></span>
+            </div>
+        </div>
 
-			<div>
-				<div class="caption blue">Blue</div>
-				<label for="blue" class="brightness fa">
-					<input class="blue" id="blue" type="range" min="0" max="255" step="1" value="0"  [(ngModel)]="RGBColors.blue" (ngModelChange)="setRGBColors($event)" >
-				</label>
-			</div>
+         <div class="vl-action-option vl-motion-option">
+            <div class="vl-icon vl-icon-motion"></div>
+            <p>Motion sensor</p>
+            <div class="toggle-btn">
+              <input type="checkbox"  checked class="cb-value" />
+              <span class="round-btn"></span>
+            </div>
+        </div>
+    </section>
 
-		</section>
-
-      </div>
-    </div><!--/ RGB SLIDE SELECTOR -->
-
-
-    <!-- EFFECT  SELECTOR -->
-    <div class="row">
-    	<div class="one-third column">
-    		<button (click)="rainbowEffect()">Rainbow effect</button>
-    	</div>
-
-    	<div class="one-third column">
-			<input type="text" value="" placeholder="Type time in seconds"  [(ngModel)] = "triggerTime" />
-    		<button (click)="shootCamera()">Trigger camera</button>
-    	</div>
-    </div>
-    <!-- EFFECT  SELECTOR -->
-
-
-    <!-- STATIC COLOR SELECTOR -->
-    <div class="row">
-      <div class="twelve columns square-color red" (click)="setHexColors('#ff0000')">eTnl</div>
-      <div class="twelve columns square-color green" (click)="setHexColors('#00ff00')">Ten</div>
-      <div class="twelve columns square-color blue" (click)="setHexColors('#0000ff')">Ten</div>
-      <div class="twelve columns square-color purple" (click)="setHexColors('#F20FE3')">Ten</div>
-      <div class="twelve columns square-color cyan" (click)="setHexColors('#0FC9F2')">Ten</div>
-      <div class="twelve columns square-color yellow" (click)="setHexColors('#FFF700')">Ten</div>
-    </div>
-    <!--/ STATIC COLOR SELECTOR -->
-  </div>
-
-
-
+    <section class="vl-colour-palette">
+        <div class="vl-colour-box vl-colour-red"></div>
+        <div class="vl-colour-box vl-colour-green"></div>
+        <div class="vl-colour-box vl-colour-blue"></div>
+        <div class="vl-colour-box vl-colour-purple"></div>
+        <div class="vl-colour-box vl-colour-cyan"></div>
+        <div class="vl-colour-box vl-colour-yellow"></div>
+    </section>
+</div>
