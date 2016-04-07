@@ -503,19 +503,20 @@ webpackJsonp([2],{
 	        this._socketEventsService.setIntensity(this.ligthIntensity);
 	    };
 	    App.prototype.rainbowEffect = function () {
-	        this.isRainbowEffectActive = !this.isRainbowEffectActive;
 	        if (this.isRainbowEffectActive) {
 	            this._socketEventsService.setHexColors("#000000");
+	            this.isRainbowEffectActive = false;
 	        }
 	        else {
 	            this._socketEventsService.rainbowEffect();
+	            this.isRainbowEffectActive = true;
 	        }
 	    };
 	    App.prototype.fadeEffect = function () {
 	        this._socketEventsService.fadeEffect();
 	    };
 	    App.prototype.shootCamera = function () {
-	        this.rainbowEffect();
+	        this._socketEventsService.rainbowEffect();
 	        this._socketEventsService.triggerCamera(this.triggerTime * 1000);
 	    };
 	    App.prototype.changeTimer = function (isIncreasingTime) {
