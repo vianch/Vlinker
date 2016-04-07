@@ -1,13 +1,13 @@
 <div class="vl-wrapper">
     <section class="vl-camera">
-            <div class="vl-camera-trigger"></div>
+            <div class="vl-camera-trigger" (click)="shootCamera()"></div>
             <h2>Camera</h2>
             <div class="vl-timmer">
                 <p>Timmer</p>
                 <div class="vl-timer-counter">
-                    <span class="vl-timer-number">0</span>
-                    <div class="vl-button-number">-</div>
-                    <div class="vl-button-number">+</div>
+                    <span class="vl-timer-number">{{triggerTime}}s</span>
+                    <div class="vl-button-number" (click)="changeTimer(false)">-</div>
+                    <div class="vl-button-number" (click)="changeTimer(true)">+</div>
                 </div>
             </div>
     </section>
@@ -16,7 +16,7 @@
         <div class="vl-action-option vl-ligth-option">
             <div class="vl-icon vl-icon-lights"></div>
             <p>Turn on lights</p>
-            <div class="toggle-btn ">
+            <div class="toggle-btn" (click)="changeLigthIntensity()" [ngClass]="{active: ligthIntensity === 100}">
               <input type="checkbox"  checked class="cb-value" />
               <span class="round-btn"></span>
             </div>
@@ -25,7 +25,7 @@
         <div class="vl-action-option vl-rainbow-option">
             <div class="vl-icon vl-icon-rainbow"></div>
             <p>Rainbow effect</p>
-            <div class="toggle-btn active">
+            <div class="toggle-btn" (click)="rainbowEffect()" [ngClass]="{active: isRainbowEffectActive}">
               <input type="checkbox"  checked class="cb-value" />
               <span class="round-btn"></span>
             </div>
@@ -34,7 +34,7 @@
          <div class="vl-action-option vl-fade-option">
             <div class="vl-icon vl-icon-fade"></div>
             <p>Fade effect</p>
-            <div class="toggle-btn active">
+            <div class="toggle-btn">
               <input type="checkbox"  checked class="cb-value" />
               <span class="round-btn"></span>
             </div>
@@ -50,12 +50,20 @@
         </div>
     </section>
 
-    <section class="vl-colour-palette">
-        <div class="vl-colour-box vl-colour-red"></div>
-        <div class="vl-colour-box vl-colour-green"></div>
-        <div class="vl-colour-box vl-colour-blue"></div>
-        <div class="vl-colour-box vl-colour-purple"></div>
-        <div class="vl-colour-box vl-colour-cyan"></div>
-        <div class="vl-colour-box vl-colour-yellow"></div>
+    <section class="vl-rgb-bars">
+    <h2>RGB COLORS</h2>
+      <input class="red" id="red" type="range" min="0" max="255" step="1"  [(ngModel)]="RGBColors.red"  (ngModelChange)="setRGBColors($event)" />
+      <input class="green" id="green" type="range" min="0" max="255" step="1" value="0"  [(ngModel)]="RGBColors.green" (ngModelChange)="setRGBColors($event)" >
+      <input class="blue" id="blue" type="range" min="0" max="255" step="1" value="0"  [(ngModel)]="RGBColors.blue" (ngModelChange)="setRGBColors($event)" >
     </section>
+
+    <section class="vl-colour-palette">
+        <div class="vl-colour-box vl-colour-red" (click)="setHexColors('#ff0000')"></div>
+        <div class="vl-colour-box vl-colour-green" (click)="setHexColors('#00ff00')"></div>
+        <div class="vl-colour-box vl-colour-blue" (click)="setHexColors('#0000ff')"></div>
+        <div class="vl-colour-box vl-colour-purple" (click)="setHexColors('#F20FE3')"></div>
+        <div class="vl-colour-box vl-colour-cyan" (click)="setHexColors('#0FC9F2')"></div>
+        <div class="vl-colour-box vl-colour-yellow" (click)="setHexColors('#FFF700')"></div>
+    </section>
+
 </div>

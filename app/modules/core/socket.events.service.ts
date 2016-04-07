@@ -16,6 +16,10 @@ class SocketEventsService implements  ISocketEventsService {
         this.socket.emit("setColors", { color: hexColor });
     }
 
+    public setIntensity(intensity: number): void {
+        this.socket.emit("setIntensity", { intensity : intensity});
+    }
+
     public rainbowEffect(): void {
         this.socket.emit("rainbowColors", {data: ""});
     }

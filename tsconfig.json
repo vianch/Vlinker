@@ -17,7 +17,14 @@
      "typings/tsd.d.ts",
      "app/contracts/vlinker.d.ts",
      "node_modules/angular2/typings/browser.d.ts"
-   ]
+   ],
+   "exclude": [
+    "node_modules",
+    "node_modules/rxjs"
+  ]
 }
+
+
+
 
 

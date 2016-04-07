@@ -96,6 +96,9 @@ class Vlinker {
 		this._led.color(color);
 	}
 
+	setLigthIntensity(intensity) {
+		this._led.intensity(intensity);
+	}
 
 	isVlinkerReady() {
 		return this._isVlinkerReady;

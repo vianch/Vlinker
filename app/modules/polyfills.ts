@@ -1,19 +1,21 @@
 // polyfills
+import "ie-shim"; // Internet Explorer
 import "es6-shim";
 import "es6-promise";
-// these modules are what is in "angular2/bundles/angular2-polyfills" so don"t use that here
-import "es7-reflect-metadata/dist/browser";
-// in Production you may want to remove this module
-
+import "es7-reflect-metadata";
+require("zone.js/dist/zone");
+require("zone.js/dist/long-stack-trace-zone");
 // angular 2
 import "angular2/platform/browser";
 import "angular2/platform/common_dom";
 import "angular2/core";
-import "angular2/router";
+import "angular2/common";
 import "angular2/http";
+import "angular2/router";
 
 // rxJS
-import "rxjs";
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/mergeMap";
 // other vendors for example jQuery or Lodash
-// 
+
 import "socket.io-client";

@@ -9,13 +9,19 @@
       "commit": "717a5fdb079f8dd7c19f1b22f7f656dd990f0ccf"
     },
     "zone.js/zone.js.d.ts": {
-      "commit": "717a5fdb079f8dd7c19f1b22f7f656dd990f0ccf"
+      "commit": "247e8d48404d11f3aff85dea5029413229e0fc36"
     },
     "socket.io/socket.io.d.ts": {
       "commit": "12f9b621f914fe2b9486a74e0f2e130621837bfc"
     },
     "node/node.d.ts": {
-      "commit": "0d622d857f97d44ea7dcad2b3edec1f23c48fe9e"
+      "commit": "247e8d48404d11f3aff85dea5029413229e0fc36"
+    }
+    "source-map/source-map.d.ts": {
+      "commit": "247e8d48404d11f3aff85dea5029413229e0fc36"
+    },
+    "webpack/webpack.d.ts": {
+      "commit": "247e8d48404d11f3aff85dea5029413229e0fc36"
     }
   }
 }

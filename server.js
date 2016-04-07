@@ -88,6 +88,15 @@ class VServer {
 		}
 	}
 
+	socketSetLigthIntensityEvent() {
+		if(Vlinker.isVlinkerReady) {
+			this.socket.on('setIntensity', (data) => {
+				Vlinker.clearIntervals();
+				Vlinker.setIntensity(data.intensity);
+			});
+		}
+	}
+
 	socketRainbowEvent() {
 		if(Vlinker.isVlinkerReady()) { 
 			this.socket.on('rainbowColors', (data) => {
