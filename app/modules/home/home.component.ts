@@ -42,11 +42,12 @@ export default class App implements IHome, OnInit {
     }
 
 	public rainbowEffect(): void {
-        this.isRainbowEffectActive = !this.isRainbowEffectActive;
         if (this.isRainbowEffectActive) {
-            this._socketEventsService.setHexColors("#000000");
+                this._socketEventsService.setHexColors("#000000");
+                this.isRainbowEffectActive = false;
         } else {
             this._socketEventsService.rainbowEffect();
+            this.isRainbowEffectActive = true;
         }
 	}
 
@@ -55,7 +56,7 @@ export default class App implements IHome, OnInit {
 	}
 
     public shootCamera(): void {
-        this.rainbowEffect();
+        this._socketEventsService.rainbowEffect();
         this._socketEventsService.triggerCamera(this.triggerTime * 1000);
     }
 
