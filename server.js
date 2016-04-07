@@ -71,6 +71,7 @@ class VServer {
 		    this.socketRainbowEvent();
 		    this.socketFadeEvent();
 			this.socketTriggercameraEvent();
+			this.socketSetLigthIntensityEvent();
 		});
 	}
 
