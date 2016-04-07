@@ -427,8 +427,9 @@ webpackJsonp([2],{
 	    SocketEventsService.prototype.setHexColors = function (hexColor) {
 	        this.socket.emit("setColors", { color: hexColor });
 	    };
-	    SocketEventsService.prototype.setIntensity = function (intensity) {
-	        this.socket.emit("setIntensity", { intensity: intensity });
+	    SocketEventsService.prototype.setIntensity = function (_intensity) {
+	        console.log(_intensity);
+	        this.socket.emit("setIntensity", { intensity: _intensity });
 	    };
 	    SocketEventsService.prototype.rainbowEffect = function () {
 	        this.socket.emit("rainbowColors", { data: "" });

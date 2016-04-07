@@ -76,28 +76,38 @@ class Vlinker {
 	}
 
 	triggerCamera(stateTrigger) {
-		this._board.digitalWrite(5,stateTrigger);
+		if(this.isVlinkerReady) {
+			this._board.digitalWrite(5,stateTrigger);
+		}
 	}
 
 	turnLigthOn() { 
-		this.clearIntervals();
-		this._isTheLigthOn = true;
-		this._led.color("#00FF00");
+		if(this.isVlinkerReady) {
+			this.clearIntervals();
+			this._isTheLigthOn = true;
+			this._led.color("#00FF00");
+		}
 	}
 
 	turnLigthOff() {
-		this.clearIntervals();
-		this._led.color("#000000");
-		this._isTheLigthOn = false;
+		if(this.isVlinkerReady) {
+			this.clearIntervals();
+			this._led.color("#000000");
+			this._isTheLigthOn = false;
+		}
 	}
 
 	setLigthColor(color) {
-		this.clearIntervals();
-		this._led.color(color);
+		if(this.isVlinkerReady) {
+			this.clearIntervals();
+			this._led.color(color);
+		}
 	}
 
 	setLigthIntensity(intensity) {
-		this._led.intensity(intensity);
+		if(this.isVlinkerReady) {
+			this._led.intensity(intensity);
+		}
 	}
 
 	isVlinkerReady() {
@@ -105,19 +115,23 @@ class Vlinker {
 	}
 
 	setLCDMessage(message) {
-		this._lcd.clear();
-		this._lcd.print(message);
+		if(this.isVlinkerReady) {
+			this._lcd.clear();
+			this._lcd.print(message);
+		}
 	}
 
 	rainbowEfect() {
-		let iterator = 0,
-		colorArray = ["#FF0000","#FF7F00","#FFFF00","#00FF00","#0000FF","#4B0082","#8F00FF"]
-		this.clearIntervals();
-		this._interval = setInterval(() => {
-			this._led.color(colorArray[iterator]);
-			++iterator
-			iterator = (iterator === colorArray.length) ? 0 :  iterator;
-		}, 300);
+		if(this.isVlinkerReady) {
+			let iterator = 0,
+			colorArray = ["#FF0000","#FF7F00","#FFFF00","#00FF00","#0000FF","#4B0082","#8F00FF"]
+			this.clearIntervals();
+			this._interval = setInterval(() => {
+				this._led.color(colorArray[iterator]);
+				++iterator
+				iterator = (iterator === colorArray.length) ? 0 :  iterator;
+			}, 300);
+		}
 	}
 
 	fadeEffect(loopTime, loopWait) {

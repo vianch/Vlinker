@@ -80,49 +80,38 @@ class VServer {
 	}
 
 	socketSetColorEvent() {
-		if(Vlinker.isVlinkerReady()) {
 			this.socket.on('setColors', (RGBcolors) => {
 			  Vlinker.clearIntervals();
 			  Vlinker.setLigthColor(RGBcolors.color);
 			//Vlinker.setLCDMessage(`R:${RGBcolors.red},G:${RGBcolors.green},B:${RGBcolors.blue} `);
 			});
-		}
 	}
 
 	socketSetLigthIntensityEvent() {
-		if(Vlinker.isVlinkerReady) {
 			this.socket.on('setIntensity', (data) => {
 				Vlinker.clearIntervals();
-				Vlinker.setIntensity(data.intensity);
+				Vlinker.setLigthIntensity(data.intensity);
 			});
-		}
 	}
 
 	socketRainbowEvent() {
-		if(Vlinker.isVlinkerReady()) { 
 			this.socket.on('rainbowColors', (data) => {
 				console.log("RAINBOW START");
 			  Vlinker.rainbowEfect();
 			});
-		}
-	
 	}
 
 	socketFadeEvent() {
-		if(Vlinker.isVlinkerReady()) { 
 			this.socket.on('fadeColors', (data) => {
 				console.log("FADE START");
 			  	Vlinker.fadeEffect(100,2000);
 			});
-		}
 	}
 	
 	socketTriggercameraEvent() {
-		if(Vlinker.isVlinkerReady()) {
 			this.socket.on('triggerCamera', (data) => {
 				Vlinker.triggerCamera(data.stateTrigger);
 			});
-		}
 	}
 
 	nodeEvents() {
