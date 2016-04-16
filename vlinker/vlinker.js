@@ -52,21 +52,21 @@ class Vlinker {
 	startMotionSensor() {
 		this._motionSensor = new five.Motion(7);
 
-		motion.on("calibrated", () => {
+		this._motionSensor.on("calibrated", () => {
 			console.log("Motion sensor calibrated");
 		});
 
-		motion.on("motionstart", () => {
+		this._motionSensor.on("motionstart", () => {
 			console.log("motionstart");
 			this._led.intensity(100);
 		});
 
-		motion.on("motionend", () => {
+		this._motionSensor.on("motionend", () => {
 			console.log("motionend");
 			this._led.intensity(0);
 		});
 
-		motion.on("change", () => {
+		this._motionSensor.on("change", () => {
 			console.log("MOTION CHANGE");
 		});
 	}
