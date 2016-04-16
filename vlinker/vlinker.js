@@ -72,7 +72,8 @@ class Vlinker {
 	}
 
 	endMotionSensor() {
-		this._motionSensor = undefined;
+		this._motionSensor = null;
+		delete this._motionSensor;
 	}
 
 	startCameraTrigger() {
