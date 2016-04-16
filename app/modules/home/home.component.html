@@ -43,7 +43,7 @@
          <div class="vl-action-option vl-motion-option">
             <div class="vl-icon vl-icon-motion"></div>
             <p>Motion sensor</p>
-            <div class="toggle-btn" [ngClass] = "active: _componentsProperties.isMotionSensorActive">
+            <div class="toggle-btn" (click)="motionSensorTrigger()" [ngClass] ="{active: _componentsProperties.isMotionSensorActive}">
               <input type="checkbox" checked class="cb-value" />
               <span class="round-btn"></span>
             </div>
