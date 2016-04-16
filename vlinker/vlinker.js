@@ -72,8 +72,7 @@ class Vlinker {
 	}
 
 	endMotionSensor() {
-		this._motionSensor = null;
-		delete this._motionSensor;
+		this._board.digitalWrite(7,0);
 	}
 
 	startCameraTrigger() {
