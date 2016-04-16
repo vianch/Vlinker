@@ -1,6 +1,7 @@
 import { Component, OnInit } from "angular2/core";
 import "../../assets/styles/vlinker/home.scss";
 import {SocketEventsService} from "../core/socket.events.service";
+import {ComponentPropertiesVO} from "./home.models";
 
 
 @Component({
@@ -9,27 +10,18 @@ import {SocketEventsService} from "../core/socket.events.service";
   providers: [SocketEventsService],
 })
 export default class App implements IHome, OnInit {
-    public RGBColors: IRGBColors;
-    public triggerTime: number;
-    public timer: number;
-    public ligthIntensity: number;
-    public isRainbowEffectActive: boolean;
+    public _componentsProperties: ComponentPropertiesVO;
 
-    constructor( private _socketEventsService: SocketEventsService ) { }
+    constructor( private _socketEventsService: SocketEventsService ) {
+        this._componentsProperties = new ComponentPropertiesVO();
+    }
 
     public ngOnInit() {
-        this.RGBColors = <IRGBColors> {
-            red: 0,
-            green: 0,
-            blue: 0,
-        };
-        this.triggerTime = 1;
-        this.ligthIntensity = 0;
-        this.isRainbowEffectActive = false;
+        console.log("Home view initialized");
     }
 
 	public setRGBColors(): void {
-		this._socketEventsService.setRGBColors(this.RGBColors);
+		this._socketEventsService.setRGBColors(this._componentsProperties.RGBColors);
 	}
 
 	public setHexColors(hexColor: string): void {
@@ -37,19 +29,28 @@ export default class App implements IHome, OnInit {
 	}
 
     public changeLigthIntensity(): void {
-        this.ligthIntensity = (this.ligthIntensity === 0) ? 100 : 0;
-        this._socketEventsService.setIntensity(this.ligthIntensity);
+        this._componentsProperties.ligthIntensity = (this._componentsProperties.ligthIntensity === 0) ? 100 : 0;
+        this._socketEventsService.setIntensity(this._componentsProperties.ligthIntensity);
     }
 
 	public rainbowEffect(): void {
-        if (this.isRainbowEffectActive) {
+        if (this._componentsProperties.isRainbowEffectActive) {
                 this._socketEventsService.setHexColors("#000000");
-                this.isRainbowEffectActive = false;
+                this._componentsProperties.isRainbowEffectActive = false;
         } else {
             this._socketEventsService.rainbowEffect();
-            this.isRainbowEffectActive = true;
+            this._componentsProperties.isRainbowEffectActive = true;
         }
 	}
+
+    public motionSensorTrigger(): void {
+        if ( this._componentsProperties.isMotionSensorActive ) {
+            this._socketEventsService.endMotionSensor();
+        } else {
+            this._socketEventsService.startMotionSensor();
+        }
+        this._componentsProperties.isMotionSensorActive = !this._componentsProperties.isMotionSensorActive;
+    }
 
 	public fadeEffect(): void {
 		this._socketEventsService.fadeEffect();
@@ -57,11 +58,14 @@ export default class App implements IHome, OnInit {
 
     public shootCamera(): void {
         this._socketEventsService.rainbowEffect();
-        this._socketEventsService.triggerCamera(this.triggerTime * 1000);
+        this._socketEventsService.triggerCamera(this._componentsProperties.triggerTime * 1000);
     }
 
     public changeTimer(isIncreasingTime: string): void {
-        this.timer = (this.triggerTime > 0) ? (isIncreasingTime) ? ++this.triggerTime : --this.triggerTime : 0;
+        this._componentsProperties.timer =
+            (this._componentsProperties.triggerTime > 0) ?
+                (isIncreasingTime) ?
+                    ++this._componentsProperties.triggerTime : --this._componentsProperties.triggerTime : 0;
     }
 
 }

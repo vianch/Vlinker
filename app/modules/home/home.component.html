@@ -3,7 +3,7 @@
             <div class="vl-camera-trigger" (click)="shootCamera()"></div>
             <h2>Camera</h2>
             <div class="vl-timmer">
-                <p>Timmer</p>
+                <p>Timer</p>
                 <div class="vl-timer-counter">
                     <span class="vl-timer-number">{{triggerTime}}s</span>
                     <div class="vl-button-number" (click)="changeTimer(false)">-</div>
@@ -16,7 +16,7 @@
         <div class="vl-action-option vl-ligth-option">
             <div class="vl-icon vl-icon-lights"></div>
             <p>Turn lights on </p>
-            <div class="toggle-btn" (click)="changeLigthIntensity()" [ngClass]="{active: ligthIntensity === 100}">
+            <div class="toggle-btn" (click)="changeLigthIntensity()" [ngClass]="{active: _componentsProperties.ligthIntensity === 100}">
               <input type="checkbox"  checked class="cb-value" />
               <span class="round-btn"></span>
             </div>
@@ -25,7 +25,7 @@
         <div class="vl-action-option vl-rainbow-option">
             <div class="vl-icon vl-icon-rainbow"></div>
             <p>Rainbow effect</p>
-            <div class="toggle-btn" (click)="rainbowEffect()" [ngClass]="{active: isRainbowEffectActive}">
+            <div class="toggle-btn" (click)="rainbowEffect()" [ngClass]="{active: _componentsProperties.isRainbowEffectActive}">
               <input type="checkbox"  checked class="cb-value" />
               <span class="round-btn"></span>
             </div>
@@ -43,8 +43,8 @@
          <div class="vl-action-option vl-motion-option">
             <div class="vl-icon vl-icon-motion"></div>
             <p>Motion sensor</p>
-            <div class="toggle-btn">
-              <input type="checkbox"  checked class="cb-value" />
+            <div class="toggle-btn" [ngClass] = "active: _componentsProperties.isMotionSensorActive">
+              <input type="checkbox" checked class="cb-value" />
               <span class="round-btn"></span>
             </div>
         </div>
@@ -52,9 +52,9 @@
 
     <section class="vl-rgb-bars">
     <h2>RGB COLORS</h2>
-      <input class="red" id="red" type="range" min="0" max="255" step="1"  [(ngModel)]="RGBColors.red"  (ngModelChange)="setRGBColors($event)" />
-      <input class="green" id="green" type="range" min="0" max="255" step="1" value="0"  [(ngModel)]="RGBColors.green" (ngModelChange)="setRGBColors($event)" >
-      <input class="blue" id="blue" type="range" min="0" max="255" step="1" value="0"  [(ngModel)]="RGBColors.blue" (ngModelChange)="setRGBColors($event)" >
+      <input class="red" id="red" type="range" min="0" max="255" step="1"  [(ngModel)]="_componentsProperties.RGBColors.red"  (ngModelChange)="setRGBColors($event)" />
+      <input class="green" id="green" type="range" min="0" max="255" step="1" value="0"  [(ngModel)]="_componentsProperties.RGBColors.green" (ngModelChange)="setRGBColors($event)" >
+      <input class="blue" id="blue" type="range" min="0" max="255" step="1" value="0"  [(ngModel)]="_componentsProperties.RGBColors.blue" (ngModelChange)="setRGBColors($event)" >
     </section>
 
     <section class="vl-colour-palette">

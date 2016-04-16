@@ -72,6 +72,8 @@ class VServer {
 		    this.socketFadeEvent();
 			this.socketTriggercameraEvent();
 			this.socketSetLigthIntensityEvent();
+			this.socketStartMotionSensorEvent();
+			this.socketEndMotionSensorEvent();
 		});
 	}
 
@@ -112,6 +114,18 @@ class VServer {
 			this.socket.on('triggerCamera', (data) => {
 				Vlinker.triggerCamera(data.stateTrigger);
 			});
+	}
+
+	socketStartMotionSensorEvent() {
+		this.socket.on('startMotionSensor', (data) => {
+			Vlinker.startMotionSensor();
+		});
+	}
+
+	socketEndMotionSensorEvent() {
+		this.socket.on('endMotionSensor', (data) => {
+			Vlinker.endMotionSensor();
+		});
 	}
 
 	nodeEvents() {

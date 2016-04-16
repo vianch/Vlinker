@@ -10,7 +10,7 @@ class Vlinker {
 		this._lcd = null;
 		this._board = null;
 		this._interval = null;
-		this._isTheLigthOn = false;
+		this._motionSensor = null;
 		this._isVlinkerReady = false;
 		this._fadeTemporal = null;
 		this.startBoard();
@@ -27,7 +27,7 @@ class Vlinker {
 	initializeComponents() {
 		this.startLedRGB();
 		this.startCameraTrigger();
-		// this.startMotionSensor();
+		this.startMotionSensor();
 		// this.startLCDController();
 	}
 
@@ -50,7 +50,7 @@ class Vlinker {
 	}
 
 	startMotionSensor() {
-		let motion = new five.Motion(7);
+		this._motionSensor = new five.Motion(7);
 
 		motion.on("calibrated", () => {
 			console.log("Motion sensor calibrated");
@@ -69,6 +69,10 @@ class Vlinker {
 		motion.on("change", () => {
 			console.log("MOTION CHANGE");
 		});
+	}
+
+	endMotionSensor() {
+		this._motionSensor = undefined;
 	}
 
 	startCameraTrigger() {
