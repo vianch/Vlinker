@@ -118,7 +118,7 @@ class VServer {
 
 	socketStartMotionSensorEvent() {
 		this.socket.on('startMotionSensor', (data) => {
-			Vlinker.startMotionSensor();
+			Vlinker.restartMotionSensor();
 		});
 	}
 

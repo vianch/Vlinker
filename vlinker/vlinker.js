@@ -71,8 +71,16 @@ class Vlinker {
 		});
 	}
 
+	restartMotionSensor() {
+		this._motionSensor.on("motionend", () => {
+			this._led.intensity(0);
+		});
+	}
+
 	endMotionSensor() {
-		this._board.digitalWrite(7,0);
+		this._motionSensor.on("motionend", () => {
+			this._led.intensity(100);
+		});
 	}
 
 	startCameraTrigger() {
