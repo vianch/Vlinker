@@ -62,7 +62,6 @@ class Vlinker {
 		});
 
 		this._motionSensor.on("motionend", () => {
-			console.log("motionend");
 			this._led.intensity(0);
 		});
 
@@ -72,14 +71,18 @@ class Vlinker {
 	}
 
 	restartMotionSensor() {
+		console.log("Sensor on")
 		this._motionSensor.on("motionend", () => {
 			this._led.intensity(0);
+			console.log("Motion end on sensor on")
 		});
 	}
 
 	endMotionSensor() {
+		console.log("Sensor off")
 		this._motionSensor.on("motionend", () => {
 			this._led.intensity(100);
+			console.log("Motion end on sensor off")
 		});
 	}
 
