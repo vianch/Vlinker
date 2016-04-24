@@ -74,6 +74,8 @@ class VServer {
 			this.socketSetLigthIntensityEvent();
 			this.socketStartMotionSensorEvent();
 			this.socketEndMotionSensorEvent();
+			this.socketTurnOnMotionSensorEvent();
+			this.socketTurnOffMotionSensorEvent();
 		});
 	}
 
@@ -125,6 +127,18 @@ class VServer {
 	socketEndMotionSensorEvent() {
 		this.socket.on('endMotionSensor', (data) => {
 			Vlinker.endMotionSensor();
+		});
+	}
+
+	socketTurnOnMotionSensorEvent() {
+		this.socket.on('turnOnMotionSensor', (data) => {
+			Vlinker.turnOnMotionSensor();
+		});
+	}
+
+	socketTurnOffMotionSensorEvent() {
+		this.socket.on('turnOffMotionSensor', (data) => {
+			Vlinker.turnOffMotionSensor();
 		});
 	}
 

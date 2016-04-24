@@ -7,4 +7,6 @@ interface ISocketEventsService {
     startMotionSensor(): void;
     rainbowEffect(): void;
     triggerCamera(timeOut: number): void;
+    turnOnMotionSensor(): void;
+    turnOffMotionSensor(): void;
 }

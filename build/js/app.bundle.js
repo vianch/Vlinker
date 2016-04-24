@@ -118,6 +118,12 @@ webpackJsonp([2],{
 	    SocketEventsService.prototype.endMotionSensor = function () {
 	        this.socket.emit("endMotionSensor", { data: "" });
 	    };
+	    SocketEventsService.prototype.turnOnMotionSensor = function () {
+	        this.socket.emit("turnOnMotionSensor", { data: "" });
+	    };
+	    SocketEventsService.prototype.turnOffMotionSensor = function () {
+	        this.socket.emit("turnOffMotionSensor", { data: "" });
+	    };
 	    SocketEventsService.prototype.socketIOConnection = function (server) {
 	        this.socket = io.connect(server);
 	        this.socket.on("conection", function (data) {
@@ -615,9 +621,7 @@ webpackJsonp([2],{
 	    App.prototype.changeLigthIntensity = function () {
 	        this._componentsProperties.ligthIntensity = (this._componentsProperties.ligthIntensity === 0) ? 100 : 0;
 	        this._socketEventsService.setIntensity(this._componentsProperties.ligthIntensity);
-	        if (this._componentsProperties.ligthIntensity === 0) {
-	            this._socketEventsService.startMotionSensor();
-	        }
+	        this.toggleMotionSensorState();
 	    };
 	    App.prototype.rainbowEffect = function () {
 	        if (this._componentsProperties.isRainbowEffectActive) {
@@ -640,6 +644,16 @@ webpackJsonp([2],{
 	    };
 	    App.prototype.fadeEffect = function () {
 	        this._socketEventsService.fadeEffect();
+	    };
+	    App.prototype.toggleMotionSensorState = function () {
+	        if (this._componentsProperties.ligthIntensity === 0) {
+	            this._socketEventsService.turnOffMotionSensor();
+	            this._componentsProperties.isMotionSensorActive = false;
+	        }
+	        else {
+	            this._socketEventsService.turnOnMotionSensor();
+	            this._componentsProperties.isMotionSensorActive = true;
+	        }
 	    };
 	    App = __decorate([
 	        core_1.Component({

@@ -56,14 +56,7 @@ class Vlinker {
 			console.log("Motion sensor calibrated");
 		});
 
-		this._motionSensor.on("motionstart", () => {
-			console.log("motionstart");
-			this._led.intensity(100);
-		});
-
-		this._motionSensor.on("motionend", () => {
-			this._led.intensity(0);
-		});
+		this.turnOnMotionSensor();
 
 		this._motionSensor.on("change", () => {
 			console.log("MOTION CHANGE");
@@ -73,6 +66,7 @@ class Vlinker {
 	restartMotionSensor() {
 		console.log("Sensor on")
 		this._motionSensor.on("motionend", () => {
+			console.log("motion end");
 			this._led.intensity(0);
 			console.log("Motion end on sensor on")
 		});
@@ -81,8 +75,32 @@ class Vlinker {
 	endMotionSensor() {
 		console.log("Sensor off")
 		this._motionSensor.on("motionend", () => {
+			console.log("motion end");
 			this._led.intensity(100);
 			console.log("Motion end on sensor off")
+		});
+	}
+
+	turnOffMotionSensor() {
+		this._motionSensor.on("motionstart", () => {
+			console.log("motionstart");
+			this._led.intensity(0);
+		});
+
+		this._motionSensor.on("motionend", () => {
+			this._led.intensity(0);
+		});
+	}
+
+	turnOnMotionSensor() {
+		this._motionSensor.on("motionstart", () => {
+			console.log("motionstart");
+			this._led.intensity(100);
+		});
+
+		this._motionSensor.on("motionend", () => {
+			console.log("motion end");
+			this._led.intensity(0);
 		});
 	}
 

@@ -32,10 +32,7 @@ export default class App implements IHome, OnInit {
     public changeLigthIntensity(): void {
         this._componentsProperties.ligthIntensity = (this._componentsProperties.ligthIntensity === 0) ? 100 : 0;
         this._socketEventsService.setIntensity(this._componentsProperties.ligthIntensity);
-
-        if (this._componentsProperties.ligthIntensity === 0) {
-            this._socketEventsService.startMotionSensor();
-        }
+        this.toggleMotionSensorState();
     }
 
 	public rainbowEffect(): void {
@@ -60,4 +57,14 @@ export default class App implements IHome, OnInit {
 	public fadeEffect(): void {
 		this._socketEventsService.fadeEffect();
 	}
+
+    private toggleMotionSensorState(): void {
+        if (this._componentsProperties.ligthIntensity === 0) {
+            this._socketEventsService.turnOffMotionSensor();
+            this._componentsProperties.isMotionSensorActive = false;
+        } else {
+            this._socketEventsService.turnOnMotionSensor();
+            this._componentsProperties.isMotionSensorActive = true;
+        }
+    }
 }

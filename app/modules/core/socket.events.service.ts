@@ -45,6 +45,14 @@ class SocketEventsService implements  ISocketEventsService {
         this.socket.emit("endMotionSensor", {data: ""});
     }
 
+    public turnOnMotionSensor(): void {
+        this.socket.emit("turnOnMotionSensor", {data: ""});
+    }
+
+    public turnOffMotionSensor(): void {
+        this.socket.emit("turnOffMotionSensor", {data: ""});
+    }
+
     private socketIOConnection(server: string): void {
         this.socket = io.connect(server);
         this.socket.on("conection", (data: { message: string }) => {
