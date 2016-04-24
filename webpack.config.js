@@ -94,6 +94,8 @@ module.exports = {
                 'HMR': HMR
             }
         })
+
+
     ],
 
     // Other module loader config

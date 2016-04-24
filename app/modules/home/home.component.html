@@ -1,16 +1,5 @@
 <div class="vl-wrapper">
-    <section class="vl-camera">
-            <div class="vl-camera-trigger" (click)="shootCamera()"></div>
-            <h2>Camera</h2>
-            <div class="vl-timmer">
-                <p>Timer</p>
-                <div class="vl-timer-counter">
-                    <span class="vl-timer-number">{{triggerTime}}s</span>
-                    <div class="vl-button-number" (click)="changeTimer(false)">-</div>
-                    <div class="vl-button-number" (click)="changeTimer(true)">+</div>
-                </div>
-            </div>
-    </section>
+    <camera-component></camera-component>
 
     <section class="vl-actions">
         <div class="vl-action-option vl-ligth-option">

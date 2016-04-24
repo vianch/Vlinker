@@ -1,8 +1,6 @@
 class ComponentPropertiesVO {
     public RGBColors: IRGBColors;
     public ligthIntensity: number;
-    public triggerTime: number;
-    public timer: number;
     public isRainbowEffectActive: boolean;
     public isMotionSensorActive: boolean;
 
@@ -14,8 +12,7 @@ class ComponentPropertiesVO {
             blue: 0,
         };
         this.ligthIntensity = 0;
-        this.timer = null;
-        this.triggerTime = 1;
+
         this.isMotionSensorActive = true;
     }
 }

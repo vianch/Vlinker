@@ -1,13 +1,14 @@
 import { Component, OnInit } from "angular2/core";
-import "../../assets/styles/vlinker/home.scss";
 import {SocketEventsService} from "../core/socket.events.service";
 import {ComponentPropertiesVO} from "./home.models";
+import CameraComponent from "../camera/camera.component";
 
 
-@Component({
+@Component(<any>{
   selector: "vlinker-app",
   template: require("./home.component.html"),
-  providers: [SocketEventsService],
+  styles: [ require("../../assets/styles/vlinker/home.scss").toString()],
+  directives: [ CameraComponent ],
 })
 export default class App implements IHome, OnInit {
     public _componentsProperties: ComponentPropertiesVO;
@@ -55,17 +56,4 @@ export default class App implements IHome, OnInit {
 	public fadeEffect(): void {
 		this._socketEventsService.fadeEffect();
 	}
-
-    public shootCamera(): void {
-        this._socketEventsService.rainbowEffect();
-        this._socketEventsService.triggerCamera(this._componentsProperties.triggerTime * 1000);
-    }
-
-    public changeTimer(isIncreasingTime: string): void {
-        this._componentsProperties.timer =
-            (this._componentsProperties.triggerTime > 0) ?
-                (isIncreasingTime) ?
-                    ++this._componentsProperties.triggerTime : --this._componentsProperties.triggerTime : 0;
-    }
-
 }

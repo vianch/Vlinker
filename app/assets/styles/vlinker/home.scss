@@ -20,45 +20,6 @@ body {
 section {
   @include set-size(100%, auto, true);
  
-  &.vl-camera {
-    @include set-size(100%, 300px, true, true);
-    background: $color-theme-one;
-    color : $white-color;
-
-    .vl-camera-trigger {
-      @include set-size(128px, 128px, true, true);
-      cursor: pointer;
-      background: url($images-url + "slr-128.png");
-      margin: 0 auto;
-      @include set-position( relative, $top: 15%, $right: auto, $bottom: auto, $left: 0)
-    }
-
-    h2 {
-      @include font-size(30px); 
-      @include set-position( relative, $top: 60px, $right: auto, $bottom: auto, $left: 0);
-      margin-bottom: 15px;
-    }
-
-    .vl-timmer {
-      @include font-size(20px); 
-      @include set-position( relative, $top: 72px, $right: auto, $bottom: auto, $left: 0);
-      p, .vl-timer-counter{ float: left; width: 50%}
-      p{ font-weight: bold;}
-      .vl-timer-number, .vl-button-number {display: inline;}
-      .vl-button-number {
-        flex: 1 1 auto;
-        margin: 0;
-        padding: 5px 10px;
-        border: 2px solid $white-color;;
-        text-align: center;
-        text-transform: uppercase;
-        position: relative;
-        overflow:hidden;
-        &:hover { cursor: pointer; }
-      }
-    }
-  }
-
   &.vl-actions{
     background: $white-color;
     .vl-action-option {
