@@ -615,6 +615,9 @@ webpackJsonp([2],{
 	    App.prototype.changeLigthIntensity = function () {
 	        this._componentsProperties.ligthIntensity = (this._componentsProperties.ligthIntensity === 0) ? 100 : 0;
 	        this._socketEventsService.setIntensity(this._componentsProperties.ligthIntensity);
+	        if (this._componentsProperties.ligthIntensity === 0) {
+	            this._socketEventsService.startMotionSensor();
+	        }
 	    };
 	    App.prototype.rainbowEffect = function () {
 	        if (this._componentsProperties.isRainbowEffectActive) {

@@ -32,6 +32,10 @@ export default class App implements IHome, OnInit {
     public changeLigthIntensity(): void {
         this._componentsProperties.ligthIntensity = (this._componentsProperties.ligthIntensity === 0) ? 100 : 0;
         this._socketEventsService.setIntensity(this._componentsProperties.ligthIntensity);
+
+        if (this._componentsProperties.ligthIntensity === 0) {
+            this._socketEventsService.startMotionSensor();
+        }
     }
 
 	public rainbowEffect(): void {
